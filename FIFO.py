@@ -1,4 +1,8 @@
+import time
+
 def fifo_page(blocos, paginas):
+    tempo_inicial = time.time()
+
     tab_pag = {}  # Dicionário para representar a página e seu bit de presença
     pag_fila = []  # Fila para manter a ordem das páginas
 
@@ -19,6 +23,12 @@ def fifo_page(blocos, paginas):
                 pag_fila.append(pag)
                 tab_pag[pag] = 1
                 page_faults += 1  # Incrementa o contador de page faults
+    
+    tempo_final = time.time()
+    tempo_execucao = tempo_final - tempo_inicial
+    tempo_execucao = round(tempo_execucao, 4)
+
+    print(f"Tempo de execução: {tempo_execucao} segundos")
 
     return page_faults
 

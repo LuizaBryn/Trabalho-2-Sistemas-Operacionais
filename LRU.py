@@ -1,4 +1,3 @@
-import random
 import time
 
 class LRU:
@@ -43,9 +42,13 @@ class LRU:
         return mais_antiga
 
 lru = LRU
-lista_referencias = [random.randint(1, 50) for _ in range(200)]
 
+with open('input_teste2.txt', 'r') as file:
+    linhas = file.readlines()
+
+lista_referencias = [linha.strip() for linha in linhas[1:]]
+num_quadros = int(linhas[0].strip()) 
 print(lista_referencias)
 
-faults = lru.executar(lru, 30, lista_referencias)
+faults = lru.executar(lru, num_quadros, lista_referencias)
 print(f"Houve {faults} page faults!")
