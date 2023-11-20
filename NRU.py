@@ -1,7 +1,6 @@
 import time
 
-def nru(num_quadros, lista_referencias):
-    
+def nru(num_quadros, lista_referencias):    
     tempo_inicial = time.time()
 
     page_faults = 0
@@ -15,6 +14,8 @@ def nru(num_quadros, lista_referencias):
     print(f"Tempo de execução: {tempo_execucao} segundos")
 
     return page_faults
+
+# =====
 
 #Leitura arquivo de testes 1
 with open('input_teste1.txt', 'r') as file:
