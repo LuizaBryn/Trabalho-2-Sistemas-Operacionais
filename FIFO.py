@@ -1,35 +1,34 @@
-#Uso de tabela de páginas e bits presente/ausente
-#Páginas presentes na memória (teriam o acesso normalmente)
-#Páginas marcadas como ausente precisam ser carregadas
-
-def fifo_page_replacement(frames, pages):
-    page_table = {}  # Dicionário para representar a página e seu bit de presença
-    page_queue = []  # Fila para manter a ordem das páginas
+def fifo_page(blocos, paginas):
+    tab_pag = {}  # Dicionário para representar a página e seu bit de presença
+    pag_fila = []  # Fila para manter a ordem das páginas
 
     page_faults = 0  # Contador de page faults
 
-    for page in pages:
-        if page not in page_table:  # Se a página não está na tabela de páginas
-            if len(page_queue) < frames:  # Se ainda houver quadros disponíveis
-                page_table[page] = 1  # Define o bit de presença como 1 (alocada)
-                page_queue.append(page)  # Adiciona a página na fila
+    for pag in paginas:
+        pag = int(pag)
+        if pag not in tab_pag:  # Se a página não está na tabela de páginas
+            if len(pag_fila) < blocos:  # Se ainda houver blocos disponíveis
+                tab_pag[pag] = 1  # Define o bit de presença como 1 (alocada)
+                pag_fila.append(pag)  # Adiciona a página na fila
             else:
                 # Remove a primeira página adicionada (FIFO)
-                removed_page = page_queue.pop(0)
-                page_table.pop(removed_page)  # Remove da tabela de páginas
+                pag_removida = pag_fila.pop(0)
+                tab_pag.pop(pag_removida)  # Remove da tabela de páginas
 
                 # Adiciona a nova página no final da fila e na tabela de páginas
-                page_queue.append(page)
-                page_table[page] = 1
+                pag_fila.append(pag)
+                tab_pag[pag] = 1
                 page_faults += 1  # Incrementa o contador de page faults
 
     return page_faults
 
-# Exemplo de uso
-quadros_disponiveis = 3
-total_paginas = 10
-paginas = [1, 2, 3, 4, 1, 2, 5, 1, 2, 3, 4, 5]
+# Leitura do arquivo de entrada
+with open('input_teste2.txt', 'r') as file:
+    linhas = file.readlines()
 
-page_faults_total = fifo_page_replacement(quadros_disponiveis, paginas)
+blocos = int(linhas[0].strip())  # Primeira linha contém o número de blocos
+paginas = [linha.strip() for linha in linhas[1:]]  # Restante das linhas são as páginas
+
+page_faults_total = fifo_page(blocos, paginas)
 print("Total de page faults gerados:", page_faults_total)
 
