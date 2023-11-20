@@ -6,6 +6,8 @@ def nru(num_quadros, lista_referencias):
     page_faults = 0
 
     ...
+    "IMPLEMENTAR AQUI"
+    ...
 
     tempo_final = time.time()
     tempo_execucao = tempo_final - tempo_inicial
@@ -38,3 +40,10 @@ num_quadros = int(linhas[0].strip())
 #TESTE 2
 page_faults = nru(num_quadros, lista_referencias)
 print(f"Houve {page_faults} page faults!")
+
+# =====
+
+#TESTE 3 (verificação de lógica)
+...
+"FAÇA O TESTE QUE VOCÊ QUISER AQUI"
+...
