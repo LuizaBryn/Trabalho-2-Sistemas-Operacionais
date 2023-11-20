@@ -31,9 +31,6 @@ def relogio(num_quadros, lista_referencias):
                         else:
                             ponteiro += 1
         quadros[ref] = 1
-        print(len(quadros))
-        print(quadros)
-        print(quadros.values())
 
     tempo_final = time.time()
     tempo_execucao = tempo_final - tempo_inicial
@@ -53,8 +50,8 @@ lista_referencias = [linha.strip() for linha in linhas[1:]]
 num_quadros = int(linhas[0].strip()) 
 
 #TESTE 1
-#page_faults = relogio(num_quadros, lista_referencias)
-#print(f"Houve {page_faults} page faults!")
+page_faults = relogio(num_quadros, lista_referencias)
+print(f"Houve {page_faults} page faults!")
 
 #Leitura arquivo de testes 2
 with open('input_teste2.txt', 'r') as file:
@@ -64,9 +61,9 @@ lista_referencias = [linha.strip() for linha in linhas[1:]]
 num_quadros = int(linhas[0].strip()) 
 
 #TESTE 2
-#page_faults = relogio(num_quadros, lista_referencias)
-#print(f"Houve {page_faults} page faults!")
+page_faults = relogio(num_quadros, lista_referencias)
+print(f"Houve {page_faults} page faults!")
 
-#TESTE 3
+#TESTE 3 (verificar lógica da implementação)
 page_faults = relogio(4, [1,2,3,4,9,2,8,2,7,2,3,2,6,2,8])
 print(f"Houve {page_faults} page faults!")
