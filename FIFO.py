@@ -32,13 +32,26 @@ def fifo_page(blocos, paginas):
 
     return page_faults
 
-# Leitura do arquivo de entrada
+# Leitura do arquivo de entrada 1
+with open('input_teste1.txt', 'r') as file:
+    linhas = file.readlines()
+
+blocos = int(linhas[0].strip())  # Primeira linha contém o número de blocos
+paginas = [linha.strip() for linha in linhas[1:]]  # Restante das linhas são as páginas
+
+#TESTE 1
+page_faults_total = fifo_page(blocos, paginas)
+print("Total de page faults gerados:", page_faults_total)
+
+
+# Leitura do arquivo de entrada 2
 with open('input_teste2.txt', 'r') as file:
     linhas = file.readlines()
 
 blocos = int(linhas[0].strip())  # Primeira linha contém o número de blocos
 paginas = [linha.strip() for linha in linhas[1:]]  # Restante das linhas são as páginas
 
+#TESTE 2
 page_faults_total = fifo_page(blocos, paginas)
 print("Total de page faults gerados:", page_faults_total)
 
