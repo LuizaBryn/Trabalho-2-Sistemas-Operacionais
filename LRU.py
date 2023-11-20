@@ -1,22 +1,51 @@
+import random
+import time
+
 class LRU:
     
-    def executar(self, num_quadros:list, refs:list):         #recebe de parametro o num de quadros e as pags referenciadas
+    def executar(self, num_quadros:int, refs:list):         #recebe de parametro o num de quadros e as pags referenciadas
+        tempo_inicial = time.time()
 
         page_faults = 0
 
-        quadros = {}
+        quadros = {} # a chave é o num da page e o valor é seu tempo na memoria principal
 
         for ref in refs:
             if ref not in quadros.keys():
                 page_faults += 1
                 if len(quadros) == num_quadros:
-                    self.deleta_mais_antiga(quadros)
+                    mais_antiga = self.__encontra_mais_antiga(quadros)
+                    del quadros[mais_antiga]
+                    print(f"a pagina {mais_antiga} foi removida da mem principal")
             quadros[ref] = 0 #se já tiver na mem, atualiza o tempo pra 0, se não tiver, adiciona na mem
+            print(quadros.keys())
+            print(quadros.values())
         
-        for quadro in quadros:
-            quadros[quadro] += 1
+            for quadro in quadros:
+                quadros[quadro] += 1
         
+        tempo_final = time.time()
+        tempo_execucao = tempo_final - tempo_inicial
+        tempo_execucao = round(tempo_execucao, 4)
+
+        print(f"Tempo de execução: {tempo_execucao} segundos")
+        
+        return page_faults
+
 
     
-    def deleta_mais_antiga(quadros):
-        pass
+    def __encontra_mais_antiga(quadros):
+        mais_antiga = list(quadros.keys())[0]
+        for page in quadros.keys():
+            if quadros[page] > quadros[mais_antiga]:
+                print(f"A pagina {page} é a mais antiga com tempo igual a {quadros[page]}")
+                mais_antiga = page
+        return mais_antiga
+
+lru = LRU
+lista_referencias = [random.randint(1, 50) for _ in range(200)]
+
+print(lista_referencias)
+
+faults = lru.executar(lru, 30, lista_referencias)
+print(f"Houve {faults} page faults!")
