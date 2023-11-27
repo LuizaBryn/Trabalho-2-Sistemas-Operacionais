@@ -62,8 +62,9 @@ print("Total de page faults gerados:", page_faults_total)
 with open('input2_teste1.txt', 'r') as file:
     linhas = file.readlines()
 
-lista_referencias = [linha.strip() for linha in linhas[1:]]
-num_quadros = int(linhas[0].strip()) 
+blocos = int(linhas[0].strip())  # Primeira linha contém o número de blocos
+paginas = [linha.strip() for linha in linhas[1:]]  # Restante das linhas são as páginas
+
 
 #TESTE 1
 print("=== TESTE 2.1 === ")
@@ -75,8 +76,9 @@ print("Total de page faults gerados:", page_faults_total)
 with open('input2_teste2.txt', 'r') as file:
     linhas = file.readlines()
 
-lista_referencias = [linha.strip() for linha in linhas[1:]]
-num_quadros = int(linhas[0].strip()) 
+blocos = int(linhas[0].strip())  # Primeira linha contém o número de blocos
+paginas = [linha.strip() for linha in linhas[1:]]  # Restante das linhas são as páginas
+
 
 #TESTE 2
 print("=== TESTE 2.2 === ")

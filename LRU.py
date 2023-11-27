@@ -48,6 +48,7 @@ lista_referencias = [linha.strip() for linha in linhas[1:]]
 num_quadros = int(linhas[0].strip()) 
 
 #TESTE 1
+print("=== TESTE 1.1 === ")
 faults = lru.executar(lru, num_quadros, lista_referencias)
 print(f"Houve {faults} page faults!")
 
@@ -60,6 +61,7 @@ lista_referencias = [linha.strip() for linha in linhas[1:]]
 num_quadros = int(linhas[0].strip()) 
 
 #TESTE 2
+print("=== TESTE 1.2 === ")
 faults = lru.executar(lru, num_quadros, lista_referencias)
 print(f"Houve {faults} page faults!")
 
@@ -71,6 +73,7 @@ lista_referencias = [linha.strip() for linha in linhas[1:]]
 num_quadros = int(linhas[0].strip()) 
 
 #TESTE 1
+print("=== TESTE 2.1 === ")
 faults = lru.executar(lru, num_quadros, lista_referencias)
 print(f"Houve {faults} page faults!")
 
@@ -83,5 +86,6 @@ lista_referencias = [linha.strip() for linha in linhas[1:]]
 num_quadros = int(linhas[0].strip()) 
 
 #TESTE 2
+print("=== TESTE 2.2 === ")
 faults = lru.executar(lru, num_quadros, lista_referencias)
 print(f"Houve {faults} page faults!")
