@@ -43,14 +43,12 @@ def nru(num_quadros, lista_referencias):
                 else:
                     class_number = 3
 
-                pprint.pprint(class_dict)
-                pprint.pprint(quadros)
+                # pprint.pprint(class_dict)
+                # pprint.pprint(quadros)
 
-                # escolhe uma pagina aleatória da classe em questão
                 random_page = random.choice(class_dict[class_number])
-                # remove do dicionario de classe
+                # print(len(quadros), random_page, random_page in quadros.keys())
                 class_dict[class_number].remove(random_page)
-                # remove da lista de paginas
                 quadros.pop(random_page)
             quadros[ref] = [0, 0]
             class_dict[0].append(ref)
@@ -59,10 +57,12 @@ def nru(num_quadros, lista_referencias):
             referenced = random.choice([True, False])
             modified = random.choice([True, False])
 
-            page_class = classes[(int(referenced), int(modified))]
+            new_class = classes[(int(referenced), int(modified))]
+            old_class = classes[(quadros[ref][0], quadros[ref][1])]
 
             quadros[ref] = [int(referenced), int(modified)]
-            class_dict[page_class].append(ref)
+            class_dict[old_class].remove(ref)
+            class_dict[new_class].append(ref)
 
     tempo_final = time.time()
     tempo_execucao = tempo_final - tempo_inicial
