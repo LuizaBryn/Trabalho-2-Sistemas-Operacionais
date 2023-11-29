@@ -83,6 +83,7 @@ lista_referencias = [linha.strip() for linha in linhas[1:]]
 num_quadros = int(linhas[0].strip())
 
 # TESTE 1
+print("=== TESTE 1.1 === ")
 page_faults = nru(num_quadros, lista_referencias)
 print(f"Houve {page_faults} page faults!")
 
@@ -94,12 +95,31 @@ lista_referencias = [linha.strip() for linha in linhas[1:]]
 num_quadros = int(linhas[0].strip())
 
 # TESTE 2
+print("=== TESTE 1.2 === ")
 page_faults = nru(num_quadros, lista_referencias)
 print(f"Houve {page_faults} page faults!")
 
-# =====
+# Leitura arquivo de testes 2.1
+with open('input2_teste1.txt', 'r') as file:
+    linhas = file.readlines()
 
-# TESTE 3 (verificação de lógica)
-...
-"FAÇA O TESTE QUE VOCÊ QUISER AQUI"
-...
+lista_referencias = [linha.strip() for linha in linhas[1:]]
+num_quadros = int(linhas[0].strip())
+
+# TESTE 1
+print("=== TESTE 2.1 === ")
+faults = nru(num_quadros, lista_referencias)
+print(f"Houve {faults} page faults!")
+
+
+# Leitura arquivo de testes 2.2
+with open('input2_teste2.txt', 'r') as file:
+    linhas = file.readlines()
+
+lista_referencias = [linha.strip() for linha in linhas[1:]]
+num_quadros = int(linhas[0].strip())
+
+# TESTE 2
+print("=== TESTE 2.2 === ")
+faults = nru(num_quadros, lista_referencias)
+print(f"Houve {faults} page faults!")
