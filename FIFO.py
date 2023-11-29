@@ -14,6 +14,7 @@ def fifo_page(blocos, paginas):
             if len(pag_fila) < blocos:  # Se ainda houver blocos disponíveis
                 tab_pag[pag] = 1  # Define o bit de presença como 1 (alocada)
                 pag_fila.append(pag)  # Adiciona a página na fila
+                page_faults += 1 
             else:
                 # Remove a primeira página adicionada (FIFO)
                 pag_removida = pag_fila.pop(0)
